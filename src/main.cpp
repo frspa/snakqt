@@ -1,10 +1,12 @@
 #include <stdlib.h>
-
+#include <iostream>
 
 int main( int argc, char **argv )
 {
-    QGuiApplication app(argc, argv);
+    // app(argc, argv);
 
     std::cout << "Hello World! \n";
-    return app.exec();
+    //return app.exec();
+
+    return 1;
 }
