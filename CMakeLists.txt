@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.13)
 
-# Project INformation
+# Project Information
 project(
   SNAKQT
   LANGUAGES CXX
