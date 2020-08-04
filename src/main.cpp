@@ -1,12 +1,36 @@
-#include <stdlib.h>
 #include <iostream>
+#include <stdlib.h>
 
-int main( int argc, char **argv )
-{
-    // app(argc, argv);
+#include <QtCore>
+#include <QtQuick/QQuickView>
 
-    std::cout << "Hello World! \n";
-    //return app.exec();
+#include <QtGui/QFont>
+#include <QtGui/QGuiApplication>
 
-    return 1;
+#include <QtQml/QQmlApplicationEngine>
+#include <QtQml/QQmlContext>
+#include <QtQml/QQmlEngine>
+#include <QtQml/QQmlProperty>
+
+int main(int argc, char *argv[]) {
+
+  std::cout << "Starting SNAKQT, your snake game with cmake, Qt and QML! \n";
+  QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+  QGuiApplication app(argc, argv);
+  app.setOverrideCursor(Qt::BlankCursor);
+  QFont font("Noto Sans");
+  app.setFont(font);
+
+  QQmlApplicationEngine engine;
+  engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
+  if (engine.rootObjects().isEmpty()) {
+    return -1;
+  }
+
+  QQuickWindow *rootObject;
+  rootObject = static_cast<QQuickWindow *>(engine.rootObjects().first());
+  rootObject->showFullScreen();
+
+  std::cout << "Application started successfully. \n";
+  return app.exec();
 }
