@@ -95,4 +95,4 @@ target_link_libraries(
 target_include_directories(${PROJECT_NAME} PRIVATE src/ src/libSnakqt)
 
 # STEP4: Add unit tests
-#add_subdirectory(test)
+add_subdirectory(test)
