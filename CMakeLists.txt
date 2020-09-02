@@ -32,7 +32,9 @@ target_sources(
     libSnakqt
     PRIVATE
     src/libSnakqt/startup.hpp
-    src/libSnakqt/startup.cpp)
+    src/libSnakqt/startup.cpp
+    src/libSnakqt/board.hpp
+    src/libSnakqt/board.cpp)
 
 target_compile_features(libSnakqt PRIVATE cxx_std_17)
 target_compile_definitions(
