@@ -4,11 +4,6 @@
 #include <QString>
 #include <QObject>
 
-//Scope: Belonging to single object responsability principle, this class
-//only holds the board information. The manipulation (new fruit, snake shift, ...)
-//will be done by other class
-// --> Comment to be deleted
-
 namespace boardspace {
 
 inline namespace celltype {
