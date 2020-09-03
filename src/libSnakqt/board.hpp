@@ -1,8 +1,10 @@
 #pragma once
 
 #include <QMap>
-#include <QString>
 #include <QObject>
+#include <QString>
+
+#include <vector>
 
 namespace boardspace {
 
@@ -13,28 +15,25 @@ Q_ENUM_NS(CellType)
 } // namespace celltype
 
 struct Boardcell {
-  //Origin is on upper left corner of board
-  int XPosition_{0};
-  int YPosition_{0};
-};
-
-struct Boardmap {
-  QMap<Boardcell, CellType> boardMap;
+  // Origin is on upper left corner of board
+  uint XPosition_{0};
+  uint YPosition_{0};
 };
 
 class Board final {
 public:
-  Board();
+  Board(uint boardsize)
+      : board_(boardsize, std::vector<CellType>(boardsize, CellType::EMPTY)),
+        boardsize_(boardsize) {}
   ~Board() = default;
 
   CellType getCellTpye(Boardcell position) const;
-
-  Boardmap getBoard() const;
-
+  void setCellType(Boardcell position, CellType newType);
 
 private:
-  Boardmap board_;
-
+  bool isPositionValid(Boardcell toCheck) const;
+  std::vector<std::vector<CellType>> board_;
+  uint boardsize_;
 };
 
 } // namespace boardspace
