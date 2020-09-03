@@ -12,6 +12,8 @@
 #include <QtQml/QQmlEngine>
 #include <QtQml/QQmlProperty>
 
+#include <board.hpp>
+
 int main(int argc, char *argv[]) {
 
   std::cout << "Starting SNAKQT, your snake game with cmake, Qt and QML! \n";
@@ -30,6 +32,8 @@ int main(int argc, char *argv[]) {
   QQuickWindow *rootObject;
   rootObject = static_cast<QQuickWindow *>(engine.rootObjects().first());
   rootObject->showFullScreen();
+
+  boardspace::Board gameBoard(uint(100));
 
   std::cout << "Application started successfully. \n";
   return app.exec();

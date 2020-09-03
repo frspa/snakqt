@@ -28,7 +28,8 @@ target_sources(
   unit_tests
   PRIVATE
   src/main.cpp
-  src/toolchain_test.cpp)
+  src/toolchain_test.cpp
+  src/board_test.cpp)
 
 target_compile_features(unit_tests PRIVATE cxx_std_17)
 target_include_directories(
