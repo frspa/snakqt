@@ -1,4 +1,5 @@
 #include <board.hpp>
+#include <bertrand/bertrand.hpp>
 
 namespace boardspace {
 

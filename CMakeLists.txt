@@ -10,6 +10,21 @@ project(
 
 include(CTest GNUInstallDir)
 
+# External bertrand library for design by contract
+include(FetchContent)
+FetchContent_Declare(
+  bertrand
+  GIT_REPOSITORY https://github.com/bernedom/bertrand.git
+  GIT_TAG 0.0.12)
+
+FetchContent_GetProperties(bertrand)
+if(NOT bertrand_POPULATED)
+  FetchContent_Populate(bertrand)
+  add_subdirectory(${bertrand_SOURCE_DIR} ${bertrand_BINARY_DIR}
+                   EXCLUDE_FROM_ALL)
+endif()
+
+
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
@@ -51,7 +66,8 @@ target_compile_options(
 # Internal library is linked with system dependencies.
 target_link_libraries(
     libSnakqt
-    PRIVATE Qt5::Core Qt5::Quick Qt5::Network Threads::Threads ${OpenCV_LIBRARIES})
+    PRIVATE Qt5::Core Qt5::Quick Qt5::Network Threads::Threads ${OpenCV_LIBRARIES}
+    PUBLIC bertrand::bertrand)
 
 target_include_directories(libSnakqt PRIVATE src/)
 target_include_directories(
