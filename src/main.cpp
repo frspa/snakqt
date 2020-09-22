@@ -13,6 +13,7 @@
 #include <QtQml/QQmlProperty>
 
 #include <board.hpp>
+#include <startup.hpp>
 
 int main(int argc, char *argv[]) {
 
@@ -34,6 +35,9 @@ int main(int argc, char *argv[]) {
   rootObject->showFullScreen();
 
   boardspace::Board gameBoard(uint(100));
+
+  // GUI init and startup process
+  boardspace::setInitialFruit(&gameBoard);
 
   std::cout << "Application started successfully. \n";
   return app.exec();

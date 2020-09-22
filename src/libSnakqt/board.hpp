@@ -29,6 +29,7 @@ public:
 
   CellType getCellTpye(Boardcell position) const;
   void setCellType(Boardcell position, CellType newType);
+  uint getBoardsize() const {return boardsize_;}
 
 private:
   bool isPositionValid(Boardcell toCheck) const;

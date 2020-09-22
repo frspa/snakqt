@@ -1,4 +1,9 @@
 #pragma once
 
-// Scope1 : initialize the board, which is empty
-// Scope2 : trigger all
+#include <board.hpp>
+
+namespace boardspace {
+
+void setInitialFruit(Board* gameBoard);
+
+} // namespace boardspace
