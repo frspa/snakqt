@@ -1,20 +1,21 @@
-#include <board.hpp>
 #include <bertrand/bertrand.hpp>
+#include <board.hpp>
 
 namespace boardspace {
 
 CellType Board::getCellTpye(Boardcell position) const {
 
-  // Require
-  Q_ASSERT(isPositionValid(position));
-
+  { // design by contract
+    Require(isPositionValid(position) == true, "Position is on the board");
+  }
   return board_.at(position.XPosition_).at(position.YPosition_);
 }
 
 void Board::setCellType(Boardcell position, CellType newType) {
 
-  // Require
-  Q_ASSERT(isPositionValid(position));
+  { // design by contract
+    Require(isPositionValid(position) == true, "Position is on the board");
+  }
 
   board_.at(position.XPosition_).at(position.YPosition_) = newType;
 }
